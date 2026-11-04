@@ -1,5 +1,7 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+// Route API requests through the Next.js backend proxy.
 
-// Build absolute API URLs; tolerates a trailing slash in the base URL.
-export const apiUrl = (path: string) =>
-  `${API_BASE.replace(/\/+$/, "")}${path}`;
+export const apiUrl = (path: string) => {
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  return `/api/backend${normalizedPath.replace(/^\/api/, "")}`;
+};
