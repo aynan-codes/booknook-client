@@ -104,10 +104,10 @@ export default function BookDetailsPage({ params }: PageProps) {
         cache: "no-store",
       });
 
+      // Do not redirect to login because the Better Auth
+      // session is already checked on the frontend.
       if (response.status === 401) {
-        router.replace(
-          `/login?callbackURL=${encodeURIComponent(`/books/${bookId}`)}`
-        );
+        setAlreadyBorrowed(false);
         return;
       }
 
