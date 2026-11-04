@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+--background: #FAF9F6;
+--foreground: #193B32;
+}
+
+.dark {
+--background: #101C19;
+--foreground: #FAF9F6;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+--color-background: var(--background);
+--color-foreground: var(--foreground);
+--font-sans: Arial, Helvetica, sans-serif;
+--font-mono: monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+background: var(--background);
+color: var(--foreground);
+font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hero Animation */
+@keyframes fade-up {
+from {
+opacity: 0;
+transform: translateY(35px);
+}
+
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.animate-fade-up {
+animation: fade-up 0.8s ease-out both;
+}
+
+/* Category Animation */
+.category-card {
+animation: fade-up 0.8s ease-out both;
+}
+
+/* Book Card Animation */
+.book-card {
+transition: transform 0.4s ease;
+}
+
+.book-card:hover {
+transform: translateY(-8px);
+}
+
+/* Smooth Scrolling */
+html {
+scroll-behavior: smooth;
+}
+
+/* Swiper theme — scoped to the hero slider to preserve the BookNook palette */
+.hero-swiper {
+--swiper-pagination-bottom: 24px;
+--swiper-pagination-bullet-width: 12px;
+--swiper-pagination-bullet-height: 12px;
+--swiper-pagination-bullet-inactive-color: #fff;
+--swiper-pagination-bullet-inactive-opacity: 0.6;
+--swiper-navigation-sides-offset: 20px;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+--swiper-pagination-color: #C69C45;
+}
+
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+width: 3rem;
+height: 3rem;
+border-radius: 9999px;
+background: rgba(255, 255, 255, 0.2);
+color: #fff;
+transition: background-color 0.2s;
+}
+
+.hero-swiper .swiper-button-next:hover,
+.hero-swiper .swiper-button-prev:hover {
+background: rgba(255, 255, 255, 0.4);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+transition-duration: 0.01ms !important;
+}
 }
