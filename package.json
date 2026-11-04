@@ -9,12 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.13.5",
+    "better-auth": "^1.7.15",
+    "lucide-react": "^1.66.0",
+    "mongodb": "^7.8.0",
     "next": "16.4.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "swiper": "^14.4.0"
   },
   "devDependencies": {
-    "@tailwindcss/turbopack": "^4",
+    "@tailwindcss/turbopack": "^4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
